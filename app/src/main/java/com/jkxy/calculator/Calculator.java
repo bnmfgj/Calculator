@@ -2,9 +2,10 @@ package com.jkxy.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 
 public class Calculator extends AppCompatActivity {
-    private Buttone btnOne,btnTwo,btnThree;
+    private Button btnOne,btnTwo,btnThree,btnFour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
