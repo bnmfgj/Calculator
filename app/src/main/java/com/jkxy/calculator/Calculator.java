@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class Calculator extends AppCompatActivity {
-    private Button btnOne,btnTwo,btnThree,btnFour;
+    private Button btnOne,btnTwo,btnThree,btnFour,btnFive,btnSix;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
