@@ -73,9 +73,10 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
             case R.id.btnEight:
             case R.id.btnNine:
             case R.id.btnZero:
-                if(clear_flag){
+                if (clear_flag) {
+                    str = "";
                     inPut.setText("");
-                    clear_flag=false;
+                    clear_flag = false;
                 }
                 inPut.setText(str + ((Button) v).getText());
                 break;
@@ -83,6 +84,9 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
             case R.id.minus:
             case R.id.mul:
             case R.id.div:
+                if (clear_flag) {
+                    clear_flag = false;
+                }
                 inPut.setText(str + " " + ((Button) v).getText() + " ");
                 break;
             case R.id.clear:
@@ -103,15 +107,15 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         if (!s.contains(" ")) {
             return;
         }
-        if(clear_flag){
-            clear_flag=false;
+        if (clear_flag) {
+            clear_flag = false;
         }
         clear_flag = true;
         double result = 0;
         //运算符前的数字
-        String s1 = s.substring(0, s.indexOf(' '));
+        String s1 = s.substring(0, s.indexOf(" "));
         //运算符
-        String op = s.substring(s.indexOf(' ') + 1, s.indexOf(" ") + 2);
+        String op = s.substring(s.indexOf(" ") + 1, s.indexOf(" ") + 2);
         //运算符后的数字
         String s2 = s.substring(s.indexOf(" ") + 3);
         if (!s1.equals("") && !s2.equals("")) {
@@ -131,9 +135,22 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     result = d1 / d2;
                 }
             }
-            inPut.setText(result + "");
-            System.out.println(clear_flag);
+
+        } else if (s1.equals("") && !s2.equals("")) {
+            double d2 = Double.parseDouble(s2);
+            if (op.equals("+")) {
+                result = 0 + d2;
+            } else if (op.equals("-")) {
+                result = 0 - d2;
+            } else if (op.equals("*")) {
+                result = 0;
+            } else if (op.equals("/")) {
+                result = 0;
+            }
+        } else if (!s1.equals("") && s2.equals("")) {
+            inPut.setText(s);
         }
+        inPut.setText(result + "");
 
     }
 
